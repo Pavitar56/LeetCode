@@ -11,12 +11,12 @@ public:
         int columns=grid[0].size();
         
         
-        if(i<0 || i >= rows || j < 0 || j >= columns || grid[i][j] == '$' || grid[i][j] != 1)
+        if(i<0 || i >= rows || j < 0 || j >= columns  || grid[i][j] != 1)
         {
             return;
         }
         
-        grid[i][j] = '$';
+        grid[i][j] = -1;
         
         if(j == (columns-1))
         {
@@ -76,7 +76,7 @@ public:
                 if(grid[i][j] == 1)
                 {
                     dfs(grid,i,j);
-                   // cout<<count;
+                   break;
                 }
                 
                 
