@@ -35,9 +35,9 @@ public:
 //         delete temp;
 //         prev->next = nullptr;
         
-        ListNode* nodeNext = node->next;
+        //ListNode* nodeNext = node->next;
         
-        node->val = nodeNext->val;
+        node->val = node->next->val;
         
         node->next = node->next->next;
         
