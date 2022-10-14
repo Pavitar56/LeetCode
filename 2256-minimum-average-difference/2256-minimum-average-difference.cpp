@@ -3,37 +3,27 @@ public:
     int minimumAverageDifference(vector<int>& nums)
     {
         
-        vector<int> leftAvg(nums.size(),0);
+        int n(size(nums));
+        int minAverageDifference(INT_MAX);
+        int index;
         
-        long long int sum=0;
-        for(int i=0;i<nums.size();i++)
+        long long sumFromFront(0);
+        long long sumFromEnd(0);
+        
+        for (auto& num : nums) sumFromEnd += num;
+        
+        for (int i=0; i<n; i++) 
         {
-            sum += nums[i];
+            sumFromFront += nums[i];
+            sumFromEnd -= nums[i];
             
-            leftAvg[i] = sum/(i+1);
+            int a = sumFromFront / (i+1); // average of the first i + 1 elements.
             
-        }
-        
-        vector<int> rightAvg(nums.size(),0);
-        
-        sum=0;
-        int k=1;
-        for(int i=nums.size()-2;i>=0;i--)
-        {
-            sum += nums[i+1];
+            int b = (i == n-1) ? 0 : sumFromEnd / (n-i-1); // average of the last n - i - 1 elements.
             
-            rightAvg[i] = sum/k;
-            k++;
-        }
-        
-        int minimum = INT_MAX;
-        int index = 0;
-        for(int i=0;i<nums.size();i++)
-        {
-            
-            if(abs(leftAvg[i] - rightAvg[i])  < minimum)
+            if (abs(a-b) < minAverageDifference) 
             {
-                minimum = abs(leftAvg[i] - rightAvg[i]);
+                minAverageDifference = abs(a-b);
                 index = i;
             }
         }
