@@ -8,10 +8,6 @@ public:
         int totaldays=0;
         for(int i=0;i<weights.size();i++)
         {
-            if(weights[i]>capacity)
-            {
-                return false;
-            }
             sum += weights[i];
             
             if(sum > capacity)
@@ -40,9 +36,20 @@ public:
     
     int shipWithinDays(vector<int>& weights, int days) 
     {
+        //since all packages must be deleieverd so smallest capacity is max weight of package in array
+        //and max capacity is sum of all weights;
         
-        int start = 1;
-        int end = INT_MAX;
+        
+        
+        
+        int start = INT_MIN;
+        int end = 0;
+        
+        for(int i=0;i<weights.size();i++)
+        {
+            start=max(start,weights[i]);
+            end += weights[i];
+        }
         
         
         while(start < end)
