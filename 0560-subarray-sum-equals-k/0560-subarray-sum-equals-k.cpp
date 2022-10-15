@@ -25,35 +25,55 @@ public:
         
 //         return count;
         
-        vector<int> subSum(nums.size(),0);
-        int sum=0;
         
+        
+//         vector<int> subSum(nums.size(),0);
+//         int sum=0;
+        
+//         for(int i=0;i<nums.size();i++)
+//         {
+//             sum+=nums[i];
+//             subSum[i]=sum;
+//         }
+        
+//         unordered_map<int,int> map;
+//         int ans=0;
+//         for(int i=0;i<subSum.size();i++)
+//         {
+//             if(subSum[i] == k)
+//             {
+//                 ans++;
+//             }
+            
+//             if(map.count(subSum[i] - k)>0)
+//             {
+//                 ans += map[subSum[i] - k];
+//             }
+//             map[subSum[i]]++;
+            
+            
+            
+//         }
+        
+//         return ans;
+        
+        
+        int sum=0;
+        int ans=0;
+        unordered_map<int,int> map;
         for(int i=0;i<nums.size();i++)
         {
-            sum+=nums[i];
-            subSum[i]=sum;
-        }
-        
-        unordered_map<int,int> map;
-        int ans=0;
-        for(int i=0;i<subSum.size();i++)
-        {
-            if(subSum[i] == k)
+            sum += nums[i];
+            
+            if(sum == k)
             {
                 ans++;
             }
             
-            if(map.count(subSum[i] - k)>0)
-            {
-                ans += map[subSum[i] - k];
-            }
-            map[subSum[i]]++;
+            ans += map[sum - k];
             
-            
-            
+            map[sum]++;
         }
-        
         return ans;
-        
     }
 };
