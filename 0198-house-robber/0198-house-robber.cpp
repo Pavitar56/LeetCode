@@ -2,7 +2,7 @@ class Solution {
 public:
     int rob(vector<int>& nums) 
     {
-        vector<int> dp(nums.size(),0);
+        vector<int> dp(nums.size(),0); //keeps track for maxloot till house[i] including ith house
         
         
         for(int i=0;i<nums.size();i++)
