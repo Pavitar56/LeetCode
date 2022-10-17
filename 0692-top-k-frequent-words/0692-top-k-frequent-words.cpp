@@ -1,7 +1,7 @@
 class Solution {
 public:
  
-    
+    //for // code TC =O(N logN)  SC= O(N)
 //     bool static cmp(const pair<string,int> &p1,const pair<string,int> &p2)
 //     {
 //         if(p1.second == p2.second)
