@@ -2,12 +2,16 @@ class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) 
     {
-        set<vector<int>> ans;
+        vector<vector<int>> ans;
         
         sort(nums.begin(),nums.end());
         
         for(int i=0;i<nums.size();i++)
         {
+            if(i > 0 && nums[i] == nums[i - 1])
+            {                              //If number is getting repeated, ignore the lower loop and continue.
+                continue;
+            }
             int curr = nums[i];
             
             int j=i+1;
@@ -17,9 +21,18 @@ public:
             {
                 if((nums[j] + nums[k]) == target)
                 {
-                    ans.insert({curr,nums[j],nums[k]});
-                    j++;
-                    k--;
+                    ans.push_back({curr,nums[j],nums[k]});
+                    int last_j_occurance= nums[j];
+                    int last_k_occurance = nums[k];
+                    while(j<k && nums[j] == last_j_occurance) //as we dont want repeatition
+                    {
+                        j++;
+                    }
+                    
+                    while(k>j && nums[k] ==last_k_occurance)  //as we dont want repeatition
+                    {
+                        k--;
+                    }
                 }
                 else if((nums[j] + nums[k])>target)
                 {
@@ -32,13 +45,8 @@ public:
             }
         }
         
-        vector<vector<int>> finalans;
         
-        for(auto it = ans.begin();it!=ans.end();it++)
-        {
-            finalans.push_back(*it);
-        }
         
-        return finalans;
+        return ans;
     }
 };
