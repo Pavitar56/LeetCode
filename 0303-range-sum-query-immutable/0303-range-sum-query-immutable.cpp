@@ -17,10 +17,7 @@ public:
     
     int sumRange(int left, int right) 
     {
-        if(left == 0)
-        {
-            return preffixSum[right+1];
-        }
+      
         
         return preffixSum[right+1] - preffixSum[left];
         
