@@ -6,7 +6,7 @@ public:
         
         for(int i=0;i<temp.size();i++)
         {
-            int maximum = -1;
+            int maximum = INT_MIN;
             int idx = -1;
             for(int j=temp.size()-1; j>i ; j--)       //bcz i want farthest max digit
             {
