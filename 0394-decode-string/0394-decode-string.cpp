@@ -17,10 +17,12 @@ public:
                 
             while(stk.top() != '[')
             {
-                curr_str = stk.top() + curr_str ;
+                curr_str += stk.top();
                 stk.pop();
             }
-                
+             
+            reverse(curr_str.begin(),curr_str.end());
+            
             stk.pop();   // for '['
             string number = "";
                 
@@ -28,10 +30,12 @@ public:
                 
             while(!stk.empty() && isdigit(stk.top()))
             {
-                number = stk.top() + number;
+                number += stk.top();
                 stk.pop();
             }
                 
+            reverse(number.begin(),number.end());
+            
             int k_time = stoi(number);    // convert string to number
                 
                 
@@ -47,9 +51,11 @@ public:
         
         while(!stk.empty())
         {
-            s = stk.top() + s;
+            s += stk.top();
             stk.pop();
         }
+        
+        reverse(s.begin(),s.end());
         
         return s;
         
