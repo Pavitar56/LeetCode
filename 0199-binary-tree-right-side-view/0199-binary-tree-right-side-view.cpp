@@ -11,6 +11,8 @@
  */
 class Solution {
 public:
+    
+    //TC : O(N) where n is no of nodes
     vector<int> rightSideView(TreeNode* root) 
     {
         if(root == NULL)
@@ -42,7 +44,7 @@ public:
                 
             }
             
-            if(q.front() == NULL)
+            if(q.front() == NULL)    //after poping if null then it means i m on the last element of that level
             {
                 ans.push_back(curr->val);
             }
