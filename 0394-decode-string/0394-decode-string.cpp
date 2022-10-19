@@ -1,6 +1,8 @@
 class Solution {
 public:
-
+    
+    //TC : O(N * MAX NUMBER OF REPEATION)  SC: O(FINAL STRING)
+    
     string decodeString(string s) 
     {
         stack<char> stk;
