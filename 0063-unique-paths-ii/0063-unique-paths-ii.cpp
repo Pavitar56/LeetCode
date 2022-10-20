@@ -44,6 +44,12 @@ public:
         int m = obstacleGrid.size();
         int n = obstacleGrid[0].size();
         
+        if(obstacleGrid[0][0] == 1)       //0 os space ,1 is obstacle
+        {
+            return 0;
+        }
+        
+        
         vector<vector<int>> dp(m,(vector<int>(n,0))); 
         
         if(obstacleGrid[0][0] == 0)       //0 os space ,1 is obstacle
@@ -53,7 +59,7 @@ public:
         
         for(int k=1;k<m;k++)
         {
-            if(obstacleGrid[k][0] != 1)
+            if(obstacleGrid[k][0] == 0)
             {
                 dp[k][0] = dp[k-1][0];
             }
@@ -61,7 +67,7 @@ public:
         
         for(int k=1;k<n;k++)
         {
-            if(obstacleGrid[0][k] != 1)
+            if(obstacleGrid[0][k] == 0)
             {
                 dp[0][k] = dp[0][k-1];
             }
@@ -72,7 +78,7 @@ public:
         {
             for(int j=1;j<n;j++)
             {
-                if(obstacleGrid[i][j] != 1)
+                if(obstacleGrid[i][j] == 0)
                     dp[i][j] = dp[i-1][j] + dp[i][j-1];
             }
         }
