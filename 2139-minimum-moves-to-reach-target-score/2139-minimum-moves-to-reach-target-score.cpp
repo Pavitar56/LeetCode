@@ -1,5 +1,7 @@
 class Solution {
 public:
+    //TC = O(maxDoubles)
+    
     int minMoves(int target, int maxDoubles) 
     {
         int num = 0;
