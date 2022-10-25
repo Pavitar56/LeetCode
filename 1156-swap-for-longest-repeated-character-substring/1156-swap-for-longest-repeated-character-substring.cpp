@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //tc= O(26 * N)
     int maxRepOpt1(string text) 
     {
         
