@@ -2,12 +2,6 @@ class Solution {
 public:
     int characterReplacement(string s, int k) 
     {
-        vector<int> freq(26,0);
-        
-        for(int i=0;i<s.size();i++)
-        {
-            freq[s[i] - 'A']++;
-        }
         
         int result = 0;
         for(char c = 'A';c<='Z';c++)
@@ -16,11 +10,13 @@ public:
             int si = 0;
             int ei = 0;
             int mismatch_count = 0;
+          
             
             while(ei  < s.size())
             {
                 if(s[ei] == c && mismatch_count <= k)
                 {
+                   
                     result = max(result,ei-si+1);
                    
                 }
@@ -44,6 +40,8 @@ public:
                     si++;
                     
                 }
+                
+                
                 ei++;
                 
             }
