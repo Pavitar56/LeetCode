@@ -36,7 +36,11 @@ public:
             }
      
         }
-     
+        
+        if(open == 0)
+        {
+            return temp;
+        }
         
         string ans = "";
         open = 0;
