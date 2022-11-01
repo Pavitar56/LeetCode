@@ -5,7 +5,7 @@ public:
     {
         if(len == 0)
         {
-            return 0;
+            return 1;
         }
         
         if(s[start] == '0')
@@ -18,28 +18,28 @@ public:
             return 1;
         }
         
-        if(len == 2)
-        {
-            int num = (s[start] - '0')*10 + s[start+1] - '0';
+//         if(len == 2)
+//         {
+//             int num = (s[start] - '0')*10 + s[start+1] - '0';
             
-            if(num == 10 || num ==20)
-            {
-                return 1;
-            }
+//             if(num == 10 || num ==20)
+//             {
+//                 return 1;
+//             }
             
-            if(num%10 == 0)
-            {
-                return 0;
-            }
+//             if(num%10 == 0)
+//             {
+//                 return 0;
+//             }
             
-            if(num >= 1 && num<=26)
-            {
-                return 2;
-            }
+//             if(num >= 1 && num<=26)
+//             {
+//                 return 2;
+//             }
             
-            return 1;
+//             return 1;
             
-        }
+//         }
         
         if(dp[len] != -1)
         {
