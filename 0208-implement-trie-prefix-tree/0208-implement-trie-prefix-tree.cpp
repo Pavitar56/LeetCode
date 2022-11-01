@@ -37,14 +37,15 @@ public:
             }
             
             
-            if(i==(word.size()-1))
-            {
-                temp->children[index]->isTerminal = true;
-            }
+//             if(i==(word.size()-1))
+//             {
+//                 temp->children[index]->isTerminal = true;
+//             }
             
             temp = temp->children[index];
         }
-    
+        
+        temp->isTerminal = true;
     }
     
     bool search(string word) 
@@ -61,19 +62,19 @@ public:
             }
             
             
-            if(i==(word.size()-1))
-            {
-                if(temp->children[index]->isTerminal == false)
-                {
-                    return false;
-                }
-            }
+//             if(i==(word.size()-1))
+//             {
+//                 if(temp->children[index]->isTerminal == false)
+//                 {
+//                     return false;
+//                 }
+//             }
             
             temp = temp->children[index];
            
         }
         
-        return true;
+        return temp->isTerminal;
     }
     
     bool startsWith(string prefix) 
