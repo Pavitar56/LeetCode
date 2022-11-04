@@ -44,14 +44,10 @@ public:
         int maxProductAns = 0;
         for(int i=0;i<words.size();i++)
         {
-            vector<int> v1(26,0);
-          
-            
+     
             for(int j=i+1;j<words.size();j++)
             {
-                vector<int> v2(26,0);
-             
-                
+               
                 if(check(AllFreq[i],AllFreq[j]))
                 {
                     int temp = (words[i].size() * words[j].size());
