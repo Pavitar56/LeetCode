@@ -3,7 +3,7 @@ public:
     
     
     
-    bool check(vector<int> &v1,vector<int> &v2)
+    bool check(vector<int>& v1,vector<int>& v2)
     {
         
         for(int i=0;i<26;i++)
@@ -20,7 +20,7 @@ public:
     }
     
     
-    void fillAllFreq(vector<vector<int>> &AllFreq,vector<string> &words)
+    void fillAllFreq(vector<vector<int>>& AllFreq,vector<string>& words)
     {
         for(int i=0;i<words.size();i++)
         {
