@@ -55,7 +55,7 @@ public:
         {
             pair<TreeNode*,char> p1;
             p1.first = root;
-            p1.second = '@';
+            p1.second = '@';  //dummy val to show we found it
             
             return {p1};
         }
@@ -106,9 +106,9 @@ public:
         
       //  cout<<lca->val<<endl;
         
-        vector<pair<TreeNode*,char>> path1 = FindPath(root,startValue);
+        vector<pair<TreeNode*,char>> path1 = FindPath(lca,startValue);
         
-        vector<pair<TreeNode*,char>> path2 = FindPath(root,destValue);
+        vector<pair<TreeNode*,char>> path2 = FindPath(lca,destValue);
         
 //         for(int k=0;k<path1.size();k++)
 //         {
@@ -143,7 +143,7 @@ public:
             if(path2[j].first == lca)
             {
                 
-                while(j < path2.size()-1)
+                while(j < path2.size()-1)   // -1 because we dont want to include dest val path which                                                   is just dummy
                 {
                     ans += path2[j].second;
                     j++;
