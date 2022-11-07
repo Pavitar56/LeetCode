@@ -33,14 +33,9 @@ public:
                     nums[i+1] = nums[i];
                 }
                 
-                
-                
-                
+             
             }
-            
-            
-            
-            
+     
         }
         
         return true;
