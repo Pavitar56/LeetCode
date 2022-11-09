@@ -36,7 +36,7 @@ public:
 
                 if( intervals[ei][0] >= intervals[si][0] && intervals[ei][1] <=intervals[si][1])
                 {
-
+                      
                 }
                 else if(intervals[ei][0] >= intervals[si][0] && intervals[ei][1] >= intervals[si][1]                          && intervals[ei][0] <=intervals[si][1]  )
                 {
@@ -64,31 +64,7 @@ public:
             
         }
         return intervals;
-//         vector<vector<int>> finalans;
-        
-//         ei=ans.size()-1;
-//         si=ans.size()-1;
-        
-//         while(ei >= 0)
-//         {
-            
-//             while(ei >= 0 && ans[si][0] >= ans[ei][0] && ans[si][0] <=ans[ei][1])
-//             {
-                
-//                 ei--;
-                
-//             }
-            
-//             finalans.push_back({ans[ei+1][0] , ans[si][1] });
-            
-//             si=ei;
-            
-            
-//         }
-        
-        
-        
-//         return finalans;
+
         
     }
 };
