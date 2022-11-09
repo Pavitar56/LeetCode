@@ -19,52 +19,89 @@ public:
         
         
         
-        int prev =0;
-        int curr = intervals.size();
+//         int prev =0;
+//         int curr = intervals.size();
         
-        while(prev != curr)
-        {
-            vector<vector<int>> ans;
+//         while(prev != curr)
+//         {
+//             vector<vector<int>> ans;
             
-            int si=0;
-            int ei=0;
+//             int si=0;
+//             int ei=0;
 
-            int maximum = intervals[0][1];
+//             int maximum = intervals[0][1];
 
-            while(ei < intervals.size())
-            {
+//             while(ei < intervals.size())
+//             {
 
-                if( intervals[ei][0] >= intervals[si][0] && intervals[ei][1] <=intervals[si][1])
-                {
+//                 if( intervals[ei][0] >= intervals[si][0] && intervals[ei][1] <=intervals[si][1])
+//                 {
                       
-                }
-                else if(intervals[ei][0] >= intervals[si][0] && intervals[ei][1] >= intervals[si][1]                          && intervals[ei][0] <=intervals[si][1]  )
-                {
-                    maximum = max(maximum,intervals[ei][1]);
-                }
-                else
-                {
+//                 }
+//                 else if(intervals[ei][0] >= intervals[si][0] && intervals[ei][1] >= intervals[si][1]                          && intervals[ei][0] <=intervals[si][1]  )
+//                 {
+//                     maximum = max(maximum,intervals[ei][1]);
+//                 }
+//                 else
+//                 {
 
-                    ans.push_back({intervals[si][0],maximum});
-                    si=ei;
-                    maximum = intervals[ei][1];
+//                     ans.push_back({intervals[si][0],maximum});
+//                     si=ei;
+//                     maximum = intervals[ei][1];
 
-                }
-                ei++;
+//                 }
+//                 ei++;
+//             }
+//             ans.push_back({intervals[si][0],maximum});
+            
+//             intervals = ans;
+//             //cout<<prev<<" "<<curr<<endl;
+//             prev= curr;
+            
+//             curr = ans.size();
+            
+            
+            
+//         }
+//         return intervals;
+            
+        
+        
+        vector<vector<int>> ans;
+        
+        int i=0;
+        int j=0;
+        
+        while(i < intervals.size())
+        {
+            if(ans.size() == 0)
+            {
+                ans.push_back(intervals[i]);
             }
-            ans.push_back({intervals[si][0],maximum});
+            else if(intervals[i][0] >= ans[j][0] && intervals[i][0] <= ans[j][1]  // one part in and other outside
+                    && intervals[i][1] >= ans[j][1])
+            {
+                ans[j][1] = intervals[i][1];
+            }
+            else if(intervals[i][0] >= ans[j][0] && intervals[i][0] <= ans[j][1]   //both parts inside
+                   && intervals[i][1] <= ans[j][1])
+            {
+                i++;                //no need to do anything
+                continue;
+                    
+            }
+            else
+            {
+                ans.push_back(intervals[i]);
+                j++;
+                
+            }
             
-            intervals = ans;
-            //cout<<prev<<" "<<curr<<endl;
-            prev= curr;
-            
-            curr = ans.size();
-            
+            i++;
             
             
         }
-        return intervals;
-
         
+        return ans;
     }
 };
