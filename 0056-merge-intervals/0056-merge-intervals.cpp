@@ -67,27 +67,66 @@ public:
             
         
         
+        
+        
+        //TC:-O(Nlog(N))
+        
+//         vector<vector<int>> ans;
+        
+//         int i=0;
+//         int j=0;
+        
+//         while(i < intervals.size())
+//         {
+//             if(ans.size() == 0)
+//             {
+//                 ans.push_back(intervals[i]);
+//             }
+//             else if(intervals[i][0] >= ans[j][0] && intervals[i][0] <= ans[j][1]  // one part in and other outside
+//                     && intervals[i][1] >= ans[j][1])
+//             {
+//                 ans[j][1] = intervals[i][1];
+//             }
+//             else if(intervals[i][0] >= ans[j][0] && intervals[i][0] <= ans[j][1]   //both parts inside
+//                    && intervals[i][1] <= ans[j][1])
+//             {
+//                 i++;                //no need to do anything
+//                 continue;
+                    
+//             }
+//             else
+//             {
+//                 ans.push_back(intervals[i]);
+//                 j++;
+                
+//             }
+            
+//             i++;
+            
+            
+//         }
+        
+//         return ans;
+        
+        
         vector<vector<int>> ans;
+        
+        if(intervals.size() >= 1)
+        {
+            ans.push_back(intervals[0]);
+        }
+       
+          
         
         int i=0;
         int j=0;
         
         while(i < intervals.size())
         {
-            if(ans.size() == 0)
+            if(intervals[i][0] <= ans[j][1])         //overlapping
             {
-                ans.push_back(intervals[i]);
-            }
-            else if(intervals[i][0] >= ans[j][0] && intervals[i][0] <= ans[j][1]  // one part in and other outside
-                    && intervals[i][1] >= ans[j][1])
-            {
-                ans[j][1] = intervals[i][1];
-            }
-            else if(intervals[i][0] >= ans[j][0] && intervals[i][0] <= ans[j][1]   //both parts inside
-                   && intervals[i][1] <= ans[j][1])
-            {
-                i++;                //no need to do anything
-                continue;
+             
+                ans[j][1] = max(ans[j][1],intervals[i][1]);
                     
             }
             else
