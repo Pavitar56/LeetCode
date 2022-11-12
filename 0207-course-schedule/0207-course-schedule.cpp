@@ -2,7 +2,7 @@ class Solution {
     
     private:
     
-    bool hasCycle(int vertexes,int node,vector<vector<int>> &adj,vector<int> &visited,vector<int> &pathVisited)
+    bool hasCycleDFS(int vertexes,int node,vector<vector<int>> &adj,vector<int> &visited,                                                 vector<int> &pathVisited)
     {
         visited[node] = 1;
         pathVisited[node] = 1;
@@ -14,7 +14,7 @@ class Solution {
             
             if(!visited[neighNode])
             {
-                bool check = hasCycle(vertexes,neighNode,adj,visited,pathVisited);
+                bool check = hasCycleDFS(vertexes,neighNode,adj,visited,pathVisited);
                 if(check == true)
                 {
                     return true;
@@ -77,7 +77,7 @@ public:
             
             if(!visited[v])
             {
-                bool check = hasCycle(numCourses,v,adj,visited,pathVisited);
+                bool check = hasCycleDFS(numCourses,v,adj,visited,pathVisited);
                 if(check == true)
                 {
                     return false;
