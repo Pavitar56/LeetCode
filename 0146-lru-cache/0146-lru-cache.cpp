@@ -2,7 +2,7 @@ class LRUCache {
 
     private:
     
-    class Node
+    class Node          //least recently used is at end and most recently used is at front
     {
         public:
         
@@ -26,7 +26,7 @@ class LRUCache {
     
     
     unordered_map<int,Node*> map;
-    Node* head;
+    Node* head;   //2 dummy nodes in order to avoid checking for null
     Node* tail;
     
     int size;
@@ -107,11 +107,11 @@ class LRUCache {
             
             map[key] = newNode;
             
-            size++;
+            size++;  //only increase size here
             return ;
         }
         
-         map.erase(tail->prev->key);
+        map.erase(tail->prev->key);              
         delNode(tail->prev);
        
         
