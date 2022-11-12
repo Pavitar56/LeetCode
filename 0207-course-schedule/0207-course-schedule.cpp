@@ -37,6 +37,50 @@ class Solution {
         
     }
     
+    
+//     bool hasCycleBFS(int vertexes,int start,vector<vector<int>> &adj,vector<int> &visited)
+//     {
+        
+//         queue<pair<int,int>> q;
+//         q.push({start,-1});
+//         visited[start] = 1;
+        
+//         while(!q.empty())
+//         {
+//             pair<int,int> curr = q.front();
+//             q.pop();
+            
+//             int node = curr.first;
+//             int parent = curr.second;
+            
+//             for(int i=0; i < adj[node].size() ; i++)
+//             {
+//                 int neighNode = adj[node][i];
+            
+                
+//                 if(!visited[neighNode])
+//                 {
+//                     q.push({neighNode,node});
+//                     visited[neighNode] = 1;
+//                 }
+//                 else if(visited[neighNode] && neighNode != parent)
+//                 {
+//                     return true;
+//                 }
+                
+//             }
+        
+            
+//         }
+        
+//         return false;
+        
+        
+        
+        
+        
+//     }
+    
 public:
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) 
     {
@@ -82,6 +126,13 @@ public:
                 {
                     return false;
                 }
+                
+//                  bool check = hasCycleBFS(numCourses,v,adj,visited);
+//                  if(check == true)
+//                  {
+//                      return false;
+//                  }
+                
             }
             
         }
