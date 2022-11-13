@@ -42,20 +42,20 @@ public:
     {
         
         
-        //removing extra spaces
+//         //removing extra spaces
         
         
-        //removing leading spaces
+//         //removing leading spaces
         
         
-        LeadRemove(s);
+//         LeadRemove(s);
         
-        //removing ending spaces
+//         //removing ending spaces
         
-        EndRemove(s);
+//         EndRemove(s);
         
         
-        reverse(s.begin(),s.end());
+       // reverse(s.begin(),s.end());
         
         
         s.push_back(' ');
@@ -69,19 +69,19 @@ public:
         
         while(ei < s.size())
         {
-            while(s[ei] != ' ')
-            {
-                ei++;
-            }
-            
-            make(s,si,ei-1,ans);
-            ans += " ";
-            while(ei<s.size() && s[ei] == ' ')
+            while(s[ei] == ' ')
             {
                 ei++;
             }
             si=ei;
+            while(ei<s.size() && s[ei] != ' ')
+            {
+                ei++;
+            }
             
+            
+            ans = s.substr(si,ei - si + 1) + ans;
+         
         }
         
         ans.pop_back();
