@@ -26,7 +26,7 @@ public:
                 {
                     q.push({{row,col},0});
                     visited[row][col] = 1;
-                    ans[row][col] = 0;
+                   // ans[row][col] = 0;
                 }
                 
             }
@@ -66,8 +66,7 @@ public:
                 }
          
             }
-            
-            
+                  
         }
         
         
