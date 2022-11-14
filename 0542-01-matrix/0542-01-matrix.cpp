@@ -43,6 +43,9 @@ public:
             int col = q.front().first.second;
             
             int steps = q.front().second;
+            
+            ans[row][col] = steps;
+            
             q.pop();
             
             for(int i=0;i<4;i++)
@@ -54,17 +57,14 @@ public:
                 if(nRow >=0 && nRow < totalRows && nCol >=0 && nCol < totalCols)
                 {
                     
-                    if(!visited[nRow][nCol] && mat[nRow][nCol] == 1)
+                    if(!visited[nRow][nCol])
                     {
                         q.push({{nRow,nCol},nSteps});
-                        visited[nRow][nCol] = 1;
-                        ans[nRow][nCol] = min(nSteps,ans[nRow][nCol]);
-                        
+                        visited[nRow][nCol] = 1;    
                     }
                     
                 }
-                
-                
+         
             }
             
             
