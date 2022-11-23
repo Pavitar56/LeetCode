@@ -19,22 +19,31 @@ public:
         
 //         return maxSum;
         
-        vector<int> dp(nums.size(),0);
+//         vector<int> dp(nums.size(),0);
         
-        dp[0]= nums[0];
-        int maximum = nums[0]; 
+//         dp[0]= nums[0];
+//         int maximum = nums[0]; 
         
+        
+//         for(int i=1;i<nums.size();i++)
+//         {
+//             dp[i] = max(dp[i-1] + nums[i],nums[i]);
+//             maximum = max(dp[i],maximum);
+            
+//         }
+        
+//         return maximum;
+        
+        int prev =nums[0];
+        int maximum = nums[0];
         
         for(int i=1;i<nums.size();i++)
         {
-            dp[i] = max(dp[i-1] + nums[i],nums[i]);
-            maximum = max(dp[i],maximum);
-            
+            int curr = max(prev + nums[i],nums[i]);
+            maximum = max(curr,maximum);
+            prev= curr;
         }
-        
         return maximum;
-        
-        
         
         
         
