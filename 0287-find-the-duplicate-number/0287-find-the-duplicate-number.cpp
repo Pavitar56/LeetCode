@@ -1,5 +1,7 @@
 class Solution {
 public:
+    
+    //TC = O(N) ,SC = O(N)
     int findDuplicate(vector<int>& nums)
     {
         
@@ -10,6 +12,7 @@ public:
             if(map.count(nums[i]) > 0)
             {
                 answer = nums[i];
+                break;
             }
             
             map[nums[i]] = true;
