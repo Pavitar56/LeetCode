@@ -5,29 +5,29 @@ public:
         int pos0 = 0;
         int pos2 = nums.size() - 1;
         
-        int start = 0;
+        int curr = 0;
         
-        while(start <= pos2)
+        while(curr <= pos2)
         {
             
-            if(nums[start] == 0)
+            if(nums[curr] == 0)
             {
-                swap(nums[start],nums[pos0]);
+                swap(nums[curr],nums[pos0]);
                 pos0++;
-                if(nums[start] == 0)
+                if(nums[curr] == 0) //imp
                 {
-                    start++;
+                    curr++;
                 }
                 continue;
             }
-            else if(nums[start] == 2)
+            else if(nums[curr] == 2)
             {
-                swap(nums[start],nums[pos2]);
+                swap(nums[curr],nums[pos2]);
                 pos2--;
                 continue;
             }
             
-            start++;
+            curr++;
             
         }
         
