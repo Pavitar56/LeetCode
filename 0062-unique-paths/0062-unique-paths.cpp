@@ -111,6 +111,7 @@ public:
         vector<vector<int>> dp(m,vector<int>(n,-1));
         
         dp[m-1][n-1] = 1;
+        vector<int> front(n,0),curr(n,0);
         
         for(int row = m-1 ;row >=0 ;row--)
         {
@@ -118,21 +119,23 @@ public:
             {
                 if(row == m-1 && col == n-1)
                 {
-                    dp[row][col] = 1;
+                    curr[col] = 1;
                 }
                 else
                 {
                     int right =0;
                     int down = 0;
-                    if((col +1) < n)  right = dp[row][col+1];
-                    if((row + 1) < m) down = dp[row+1][col];
+                    if((col +1) < n)  right = curr[col+1];
+                    if((row + 1) < m) down = front[col];
         
-                    dp[row][col] = right + down;
+                    curr[col] = right + down;
                 }
+    
             }
+            front= curr;
         }
         
-        return dp[0][0];
+        return front[0];
         
         
     }
