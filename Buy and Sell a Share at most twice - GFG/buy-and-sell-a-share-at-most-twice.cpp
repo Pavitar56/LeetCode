@@ -47,8 +47,10 @@ int maxProfit(vector<int>&price){
     // vector<vector<vector<int>>> dp(price.size()+1,vector<vector<int>>(2,vector<int>(3,-1)));
     // return helper(price,0,1,2,dp);
     
-    vector<vector<vector<int>>> dp(price.size()+1,vector<vector<int>>(2,vector<int>(3,0)));
+    //vector<vector<vector<int>>> dp(price.size()+1,vector<vector<int>>(2,vector<int>(3,0)));
     
+    
+    vector<vector<int>> ahead(2,vector<int>(3,0)),curr(2,vector<int>(3,0));
     for(int idx = price.size() - 1;idx>=0;idx--)
     {
         for(int buy = 0;buy<=1;buy++)
@@ -59,21 +61,21 @@ int maxProfit(vector<int>&price){
     
                 if(buy)
                 {
-                    profit = max( -price[idx] + dp[idx+1][0][transaction],dp[idx+1][1][transaction]);
+                    profit = max( -price[idx] + ahead[0][transaction],ahead[1][transaction]);
                 }
                 else
                 {
-                    profit = max(price[idx] + dp[idx+1][1][transaction-1],dp[idx+1][0][transaction]);
+                    profit = max(price[idx] + ahead[1][transaction-1],ahead[0][transaction]);
                 }
                 
-                dp[idx][buy][transaction]=profit;
+                curr[buy][transaction]=profit;
             }
         }
         
-        
+        ahead=curr;
     }
     
-    return dp[0][1][2];
+    return ahead[1][2];
 }
 
 //{ Driver Code Starts.
