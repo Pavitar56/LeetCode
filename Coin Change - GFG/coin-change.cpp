@@ -46,23 +46,23 @@ class Solution {
         // vector<vector<long long int>> dp(N,vector<long long int>(sum+1,-1));
         // return helper(coins,N-1,sum,dp);
         
-        vector<vector<long long int>> dp(N,vector<long long int>(sum+1,0));
-        
+       // vector<vector<long long int>> dp(N,vector<long long int>(sum+1,0));
+        vector<long long int> prev(sum+1),curr(sum+1);
         
         for(int idx = 0 ;idx < N;idx++)
         {
-            dp[idx][0] = 1;
+            curr[0] = 1;
         }
         
         for(int target = 1;target<=sum;target++)
         {
             if(target % coins[0] == 0)
             {
-                dp[0][target] = 1;
+                prev[target] = 1;
             }
             else
             {
-                dp[0][target]=0;
+                prev[target]=0;
             }
         }
         
@@ -71,23 +71,23 @@ class Solution {
             for(int target = 1;target <=sum ;target++)
             {
                 
-                long long int notTake = dp[idx-1][target];
+                long long int notTake = prev[target];
                 long long int take = 0;
                 
                 if(target >= coins[idx])
                 {
-                    take = dp[idx][target - coins[idx]];
+                    take = curr[target - coins[idx]];
                 }
               
-                dp[idx][target] = take + notTake; 
+                curr[target] = take + notTake; 
          
             }
-            
+            prev=curr;
         }
         
         
         
-        return dp[N-1][sum];
+        return prev[sum];
     }
 };
 
