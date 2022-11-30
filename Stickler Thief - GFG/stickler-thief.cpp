@@ -42,20 +42,27 @@ class Solution
         // vector<int> dp(n,-1);
         // return maximum(arr,n-1,dp);
         
-        vector<int> dp(n,0);
-        dp[0] = arr[0];
+        // vector<int> dp(n,0);
+        // dp[0] = arr[0];
+        
+        int prev,prev2;
+        
+        prev = arr[0];
+        prev2=0;
         
         for(int idx=1;idx<n;idx++)
         {
             
-            int notTake = dp[idx-1];
-            int take = arr[idx] + dp[idx-2];
+            int notTake = prev;
+            int take = arr[idx] + prev2;
         
         
-            dp[idx]=max(take,notTake);
+            int curr=max(take,notTake);
+            prev2=prev;
+            prev=curr;
             
         }
-        return dp[n-1];
+        return prev;
     }
 };
 
