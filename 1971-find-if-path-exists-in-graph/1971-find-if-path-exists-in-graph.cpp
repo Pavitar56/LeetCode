@@ -19,7 +19,7 @@ public:
         {
             int nNode = adj[start][i];
             
-            if(path(adj,nNode,end,visited) == true)
+            if(visited[nNode] == 0 && path(adj,nNode,end,visited) == true)
             {
                 return true;
             }
