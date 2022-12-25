@@ -54,17 +54,19 @@ class Solution{
             
         }
         
-        if(end == 0 && preSum[end] > target)
+        if(end == 0 && preSum[end] > target) //this is when not found
         {
             return 0;
         }
         
-        if(preSum[end] > target)
+        if(preSum[end] > target) //this is when found 1st element greater
         {
             return end;
         }
         
-        return end+1;
+        return end+1; //this is when element == target..
+        
+        //since we want number of elements so added 1 to all results
         
     }
     
