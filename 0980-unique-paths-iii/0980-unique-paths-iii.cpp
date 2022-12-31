@@ -1,16 +1,16 @@
 class Solution {
 public:
-    int ans = 0;
+    //int ans = 0;
     
     vector<int> dRow ={-1,0,1,0};
     vector<int> dCol ={0,1,0,-1};
     
-    void dfs(vector<vector<int>>& grid,int currRow,int currCol,int endRow,int endCol,
+    int dfs(vector<vector<int>>& grid,int currRow,int currCol,int endRow,int endCol,
              vector<vector<int>> &visited)
     {
         if(visited[currRow][currCol] == 1)
         {
-            return;
+            return 0;
         }
         
         if(currRow == endRow && currCol == endCol)
@@ -29,19 +29,19 @@ public:
                     }
                 }
             }
-            
+            visited[endRow][endCol] = 0;
             if(flag == true)
             {
-                ans++;
+                return 1;
             }
             
-            visited[endRow][endCol] = 0;
-            return;
+            
+            return 0;
             
         }
         
         
-        
+        int ans = 0;
         visited[currRow][currCol] = 1;
         
         for(int i=0;i<4;i++)
@@ -54,7 +54,7 @@ public:
             {
                 if(grid[nRow][nCol] != -1)
                 {
-                    dfs(grid,nRow,nCol,endRow,endCol,visited);
+                    ans += dfs(grid,nRow,nCol,endRow,endCol,visited);
                 }
                 
             }
@@ -62,7 +62,7 @@ public:
         
         visited[currRow][currCol] = 0;
         
-        return;
+        return ans;
  
     }
     
@@ -94,7 +94,7 @@ public:
         }
         
         
-        dfs(grid,startRow,startCol,endRow,endCol,visited);
+        int ans = dfs(grid,startRow,startCol,endRow,endCol,visited);
         
         
         
