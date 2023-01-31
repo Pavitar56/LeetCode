@@ -48,28 +48,45 @@ public:
     
     int bestTeamScore(vector<int>& scores, vector<int>& ages) {
         
-        vector<pair<int,int>> v(scores.size(),pair<int,int>());
-        //age,score
-        for(int i=0;i<scores.size();i++)
-        {
-            
-            v[i].first = ages[i];
-            v[i].second = scores[i];
-            
-        }
-        
-        sort(v.begin(),v.end());
+//         vector<pair<int,int>> v(scores.size(),pair<int,int>());
+//         //age,score
 //         for(int i=0;i<scores.size();i++)
 //         {
             
-//             cout<<v[i].first<<" "<<v[i].second<<endl;
+//             v[i].first = ages[i];
+//             v[i].second = scores[i];
             
 //         }
         
-        vector<vector<int>> dp(v.size()+1,vector<int>(v.size()+1,-1));
-        int maximum = solve(v,0,-1,dp);
+//         sort(v.begin(),v.end());
+// 
+//         vector<vector<int>> dp(v.size()+1,vector<int>(v.size()+1,-1));
+//         int maximum = solve(v,0,-1,dp);
         
-        return maximum;
+//         return maximum;
+        
+        //2nd approach LIS Approach
+        int n = scores.size();
+        int dp[n], ans = 0;
+        
+        vector<pair<int, int>> players;
+        
+        for(int i = 0; i < n; i++) 
+            players.push_back({ages[i], scores[i]});
+        
+        sort(players.begin(), players.end());
+        
+        for(int i = 0; i < n; i++)
+        {
+            dp[i] = players[i].second;
+            for(int j = 0; j < i; j++) 
+            {
+                if(players[j].second <= players[i].second)
+                    dp[i] = max(dp[i], dp[j] + players[i].second);
+            }
+            ans = max(ans, dp[i]);
+        }
+        return ans;
         
         
     }
