@@ -79,7 +79,7 @@ public:
         for(int i = 0; i < n; i++)
         {
             dp[i] = players[i].second;
-            for(int j = 0; j < i; j++) 
+            for(int j = i-1; j >= 0; j--) 
             {
                 if(players[j].second <= players[i].second)
                     dp[i] = max(dp[i], dp[j] + players[i].second);
