@@ -39,37 +39,46 @@ public:
     
     string gcdOfStrings(string str1, string str2) {
         
-        string small;
-        string big;
+//         string small;
+//         string big;
         
-        if(str1.size() < str2.size())
-        {
-            small = str1;
-            big = str2;
-        }
-        else
-        {
-            small = str2;
-            big = str1;
-        }
+//         if(str1.size() < str2.size())
+//         {
+//             small = str1;
+//             big = str2;
+//         }
+//         else
+//         {
+//             small = str2;
+//             big = str1;
+//         }
         
         
-        for(int len = small.size(); len >= 1 ; len--)
-        {
-            string prefix = small.substr(0,len);
+//         for(int len = small.size(); len >= 1 ; len--)
+//         {
+//             string prefix = small.substr(0,len);
             
-            if(prefix == big.substr(0,len))
-            {
-                if(divisible(str1,str2,prefix))
-                {
-                    return prefix;
-                }
-            }
+//             if(prefix == big.substr(0,len))
+//             {
+//                 if(divisible(str1,str2,prefix))
+//                 {
+//                     return prefix;
+//                 }
+//             }
             
             
-        }
+//         }
         
-        return "";
+//         return "";
+        
+        // Check if they have non-zero GCD string.
+        if (str1 + str2 != str2 + str1) {
+            return "";
+        }
+
+        // Get the GCD of the two lengths.
+        int gcdLength = gcd(str1.size(), str2.size());
+        return str1.substr(0, gcdLength);
         
     }
 };
