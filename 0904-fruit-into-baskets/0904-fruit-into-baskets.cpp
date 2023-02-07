@@ -2,30 +2,32 @@ class Solution {
 public:
     int totalFruit(vector<int>& fruits) {
          
-        unordered_map<int, int> count; // hash map to store the frequency of the elements in the subarray
+                // We use a hash map 'basket' to store the number of each type of fruit.
+        unordered_map<int, int> basket;
+        int left = 0, maxPicked = 0;
         
-        int i, j; // variables i and j are used to keep track of the subarray boundaries
-        
-        int ans = 0;
-        for (i = 0, j = 0; j < fruits.size(); ++j) 
+        // Add fruit from the right index (right) of the window.
+        for (int right = 0; right < fruits.size(); ++right)
         {
-            count[fruits[j]]++; // increase the count of the current fruit
+            basket[fruits[right]]++;
             
-            if (count.size() > 2) 
-            { 
-                count[fruits[i]]--; // reduce the count of the first fruit 
-                
-                if (count[fruits[i]] == 0)
-                {
-                    count.erase(fruits[i]);  //remove it from the map if its count becomes 0
-                }
-                
-                i++; // move the start of the subarray to the right
+            // If the current window has more than 2 types of fruit,
+            // we remove fruit from the left index (left) of the window,
+            // until the window has only 2 types of fruit.
+            while (basket.size() > 2) 
+            {
+                basket[fruits[left]]--;
+                if (basket[fruits[left]] == 0)
+                    basket.erase(fruits[left]);
+                left++;
             }
             
-            ans = max(ans,j-i+1);
+            // Update maxPicked.
+            maxPicked = max(maxPicked, right - left + 1);
         }
         
-        return ans; // return the length of the longest subarray with at most two unique elements
+        // Return maxPicked as the maximum number of fruits we can collect.
+        return maxPicked;
     }
+
 };
