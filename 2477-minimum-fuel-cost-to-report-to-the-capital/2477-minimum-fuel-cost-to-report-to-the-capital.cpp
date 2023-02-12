@@ -1,32 +1,33 @@
 class Solution {
- public:
-  long long minimumFuelCost(vector<vector<int>>& roads, int seats) {
-    long long ans = 0;
-    vector<vector<int>> graph(roads.size() + 1);
+public:
+    long long fuel;
 
-    for (const vector<int>& road : roads) {
-      const int u = road[0];
-      const int v = road[1];
-      graph[u].push_back(v);
-      graph[v].push_back(u);
+    long long dfs(int node, int parent, vector<vector<int>>& adj, int& seats) {
+        // The node itself has one representative.
+        int representatives = 1;
+        for (auto& child : adj[node]) {
+            if (child != parent) {
+                // Add count of representatives in each child subtree to the parent subtree.
+                representatives += dfs(child, node, adj, seats);
+            }
+        }
+
+        if (node != 0) {
+            // Count the fuel it takes to move to the parent node.
+            // Root node does not have any parent so we ignore it.
+            fuel += ceil((double)representatives / seats);
+        }
+        return representatives;
     }
 
-    dfs(graph, 0, -1, seats, ans);
-    return ans;
-  }
-
- private:
-  int dfs(const vector<vector<int>>& graph, int u, int prev, int seats,
-          long long& ans) {
-    int people = 1;
-    for (const int v : graph[u]) {
-      if (v == prev)
-        continue;
-      people += dfs(graph, v, u, seats, ans);
+    long long minimumFuelCost(vector<vector<int>>& roads, int seats) {
+        int n = roads.size() + 1;
+        vector<vector<int>> adj(n);
+        for (auto& road : roads) {
+            adj[road[0]].push_back(road[1]);
+            adj[road[1]].push_back(road[0]);
+        }
+        dfs(0, -1, adj, seats);
+        return fuel;
     }
-    if (u > 0)
-      // # of cars needed = ceil(people / seats)
-      ans += (people + seats - 1) / seats;
-    return people;
-  }
 };
