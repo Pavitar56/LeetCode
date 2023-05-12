@@ -1,3 +1,4 @@
+
 class Solution {
 public:
     
@@ -25,14 +26,35 @@ public:
     
     
     
+    int min(int a,int b)
+    {
+        return (a>b)?b:a;
+    }
+    
     long long mostPoints(vector<vector<int>>& questions) {
         
-        vector<long long int> dp(questions.size(),-1);
-        return solve(questions,0,dp);
+        // vector<long long int> dp(questions.size(),-1);
+        // return solve(questions,0,dp);
+        
+        vector<long long int> dp(questions.size() + 1,0);
         
         
         
         
+        for(int idx = questions.size() - 1 ;idx >= 0;idx--)
+        {
+            
+            long long int notTake = dp[idx+1];
+            
+            int nextPossible = min(questions.size() , idx + questions[idx][1] + 1);
+            long long int take = dp[nextPossible] + questions[idx][0];
+        
+            dp[idx] = max(take,notTake);
+        
+            
+        }
+        
+        return dp[0];
         
         
     }
